@@ -31,7 +31,7 @@ CREATE TABLE buildings (
 -- LOẠI PHÒNG
 -- =========================================
 CREATE TABLE room_types (
-  type_id INT AUTO_INCREMENT PRIMARY KEY,
+  room_type_id INT AUTO_INCREMENT PRIMARY KEY,
   building_id INT NOT NULL,
   capacity INT NOT NULL, -- số người/phòng
   room_price DECIMAL(12,2) NOT NULL, -- giá phòng trong 1 kỳ

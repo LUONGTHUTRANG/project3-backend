@@ -1,4 +1,4 @@
-USE ql_ktx;
+USE ktx_db;
 
 -- =========================================
 -- Kỳ ở (học kỳ / năm học)
@@ -6,7 +6,7 @@ USE ql_ktx;
 INSERT INTO period_stay (time_start, time_end, period_number, period_year)
 VALUES 
 ('2025-09-01', '2026-01-15', 1, 2025),
-('2026-01-15', '2026-06-31', 2, 2025),
+('2026-01-15', '2026-06-30', 2, 2025),
 ('2026-07-01', '2026-08-31', 3, 2025);
 
 -- =========================================
@@ -32,8 +32,8 @@ VALUES
 -- =========================================
 INSERT INTO rooms (room_name, building_id, room_type_id, room_status, note)
 VALUES
-('A1-101', 1, 4, 'available', 'Phòng tầng 1'),
-('A1-102', 1, 4, 'available', 'Phòng tầng 1'),
+('A1-101', 1, 3, 'available', 'Phòng tầng 1'),
+('A1-102', 1, 3, 'available', 'Phòng tầng 1'),
 ('A2-201', 2, 2, 'available', 'Phòng tầng 2'),
 ('B1-301', 3, 1, 'available', 'Phòng tầng 3');
 
