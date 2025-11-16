@@ -117,8 +117,8 @@ CREATE TABLE manager_building (
 CREATE TABLE form_register (
   form_id INT AUTO_INCREMENT PRIMARY KEY,
   student_id INT NOT NULL,
-  manager_id INT NOT NULL,
-  period_id INT NOT NULL,
+  manager_id INT NULL,
+  period_id INT NULL,
   time_register DATETIME DEFAULT CURRENT_TIMESTAMP,
   time_execute DATETIME NULL,
   preferred_building_id INT NULL,
