@@ -117,7 +117,10 @@ CREATE TABLE manager_building (
 CREATE TABLE form_register (
   form_id INT AUTO_INCREMENT PRIMARY KEY,
   student_id INT NOT NULL,
+  manager_id INT NOT NULL,
+  period_id INT NOT NULL,
   time_register DATETIME DEFAULT CURRENT_TIMESTAMP,
+  time_execute DATETIME NULL,
   preferred_building_id INT NULL,
   preferred_room_type_id INT NULL,
   preferred_roommate_id INT NULL,
@@ -128,7 +131,8 @@ CREATE TABLE form_register (
   FOREIGN KEY (student_id) REFERENCES students(student_id),
   FOREIGN KEY (preferred_building_id) REFERENCES buildings(building_id),
   FOREIGN KEY (preferred_room_type_id) REFERENCES room_types(room_type_id),
-  FOREIGN KEY (preferred_roommate_id) REFERENCES students(student_id)
+  FOREIGN KEY (preferred_roommate_id) REFERENCES students(student_id),
+  FOREIGN KEY (manager_id) REFERENCES managers(manager_id)
 );
 
 -- =========================================
@@ -149,12 +153,23 @@ CREATE TABLE room_stay (
 );
 
 -- =========================================
+-- LOẠI YÊU CẦU HỖ TRỢ
+-- =========================================
+
+CREATE TABLE support_request_types (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    is_active TINYINT(1) DEFAULT 1    -- 1 = còn dùng, 0 = ngừng dùng
+)
+
+-- =========================================
 -- YÊU CẦU HỖ TRỢ
 -- =========================================
 CREATE TABLE support_request (
   request_id INT AUTO_INCREMENT PRIMARY KEY,
   student_id INT NOT NULL,
   time_request DATETIME DEFAULT CURRENT_TIMESTAMP,
+  request_type_id INT NOT NULL,
   request_content TEXT,
   request_status ENUM('pending', 'in_progress', 'done') DEFAULT 'pending',
   manager_handle_id INT,

@@ -123,6 +123,18 @@ VALUES
 (3, 'unpaid', 1, 2000000, 'Tiền phòng kỳ 2 - 2025');
 
 -- =========================================
+-- Loại yêu cầu hỗ trợ
+-- =========================================
+
+INSERT INTO support_request_types (name, is_active) VALUES
+('Yêu cầu sửa chữa', 1),
+('Yêu cầu vệ sinh', 1),
+('Yêu cầu hành chính', 1),
+('Yêu cầu an ninh', 1),
+('Yêu cầu liên quan đến tài chính', 1),
+('Yêu cầu khác', 1)
+
+-- =========================================
 -- Yêu cầu hỗ trợ
 -- =========================================
 INSERT INTO support_request (student_id, request_content, request_status, manager_handle_id)
