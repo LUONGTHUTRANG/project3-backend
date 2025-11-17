@@ -132,7 +132,7 @@ INSERT INTO support_request_types (name, is_active) VALUES
 ('Yêu cầu hành chính', 1),
 ('Yêu cầu an ninh', 1),
 ('Yêu cầu liên quan đến tài chính', 1),
-('Yêu cầu khác', 1)
+('Yêu cầu khác', 1);
 
 -- =========================================
 -- Yêu cầu hỗ trợ

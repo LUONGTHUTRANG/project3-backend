@@ -117,8 +117,8 @@ CREATE TABLE manager_building (
 CREATE TABLE form_register (
   form_id INT AUTO_INCREMENT PRIMARY KEY,
   student_id INT NOT NULL,
-  manager_id INT NOT NULL,
-  period_id INT NOT NULL,
+  manager_id INT,
+  period_id INT,
   time_register DATETIME DEFAULT CURRENT_TIMESTAMP,
   time_execute DATETIME NULL,
   preferred_building_id INT NULL,
@@ -160,7 +160,7 @@ CREATE TABLE support_request_types (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     is_active TINYINT(1) DEFAULT 1    -- 1 = còn dùng, 0 = ngừng dùng
-)
+);
 
 -- =========================================
 -- YÊU CẦU HỖ TRỢ
@@ -169,7 +169,7 @@ CREATE TABLE support_request (
   request_id INT AUTO_INCREMENT PRIMARY KEY,
   student_id INT NOT NULL,
   time_request DATETIME DEFAULT CURRENT_TIMESTAMP,
-  request_type_id INT NOT NULL,
+  request_type_id INT,
   request_content TEXT,
   request_status ENUM('pending', 'in_progress', 'done') DEFAULT 'pending',
   manager_handle_id INT,
