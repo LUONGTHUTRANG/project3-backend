@@ -38,7 +38,21 @@ export async function checkManagerBuilding(req, res, next) {
   if (req.user.role !== 'manager') return res.status(403).json({ error: 'Forbidden' });
 
   const managerId = req.user.user_ref_id; // refers to managers.manager_id
-  const buildingId = req.params.id || req.body.building_id;
+  let buildingId = req.params.id || req.body.building_id;
+
+  // allow checking via room_id when building_id is not provided
+  if (!buildingId && req.params.room_id) {
+    try {
+      const [roomRows] = await db.query('SELECT building_id FROM rooms WHERE room_id = ? LIMIT 1', [req.params.room_id]);
+      if (roomRows.length > 0) {
+        buildingId = roomRows[0].building_id;
+      }
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: 'Server error' });
+    }
+  }
+
   if (!buildingId) return res.status(400).json({ error: 'Building id required' });
 
   try {
